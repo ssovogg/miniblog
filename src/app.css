@@ -1,0 +1,10 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container footer {
+  padding: 0.5em;
+  text-align: center;
+}

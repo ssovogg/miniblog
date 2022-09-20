@@ -37,15 +37,21 @@ const Blog = (props) => {
   const toggleEditMode = () => setEditMode((prev) => !prev);
   return (
     <div className={classes.blog}>
-      {editMode && <AddForm onCancle={toggleEditMode} />}
-      <div className={classes.header}>
-        <button onClick={toggleEditMode}>create</button>
+      <header className={classes.header}>
+        <h1>Blog</h1>
+        <div>
+          <button onClick={toggleEditMode}>create</button>
+          <button>logout</button>
+        </div>
+      </header>
+      <div className={classes.wrap}>
+        {editMode && <AddForm onCancle={toggleEditMode} />}
+        <ul className={classes.blog_list}>
+          {DUMMY.map((item) => (
+            <BlogList key={item.id} item={item} user={user} />
+          ))}
+        </ul>
       </div>
-      <ul className={classes.blog_list}>
-        {DUMMY.map((item) => (
-          <BlogList key={item.id} item={item} user={user} />
-        ))}
-      </ul>
     </div>
   );
 };
