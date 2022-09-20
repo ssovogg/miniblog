@@ -1,9 +1,11 @@
 import React from "react";
 import classes from "./BlogList.module.css";
 
-const BlogList = ({item, user}) => (
-  <li className={classes.list}>
-    <h2>item.title</h2>
+const BlogList = ({item, user, showList}) => {
+  const onClick = () => showList(item);
+  return (
+  <li className={classes.list} onClick={onClick}>
+    <h2>{item.title}</h2>
     <span className={classes.date}>{item.date}</span>
     <img src={item.image} alt="item.title" />
     <div className={classes.button}>
@@ -21,6 +23,6 @@ const BlogList = ({item, user}) => (
     )}
     </div>
   </li>
-);
+)};
 
 export default BlogList;

@@ -8,3 +8,7 @@ ul, li {
   list-style: none;
   color: inherit;
 }
+
+img {
+  vertical-align: middle;
+}

@@ -2,6 +2,8 @@ import React from "react";
 import { useRef } from "react";
 import classes from "./AddForm.module.css";
 
+const Back = (props) => <div className={classes.back} onClick={props.onClick}></div>
+
 const AddForm = ({ onCancle }) => {
   const fileRef = useRef();
   const onSubmit = (e) => {
@@ -11,6 +13,7 @@ const AddForm = ({ onCancle }) => {
     fileRef.current.click();
   };
   return (
+    <>
     <form className={classes.edit_form} onSubmit={onSubmit}>
       <input type="date" />
       <div className={classes.img}>
@@ -31,6 +34,8 @@ const AddForm = ({ onCancle }) => {
         </button>
       </div>
     </form>
+    <Back onClick={onCancle}/>
+    </>
   );
 };
 
