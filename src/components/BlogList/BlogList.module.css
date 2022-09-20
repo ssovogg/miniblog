@@ -1,41 +1,38 @@
-@value cWhite, cBody, cTitle, cButton from '../../common/color.css';
+@value cWhite, cBody, cButton, cGreen, cSkyblue, cBlack, cPurple from '../../common/color.css';
+@value fTitle, fBody from '../../common/font.css';
 
 .list {
+  font-family: fBody;
   display: flex;
+  width: 31.5%;
   text-align: start;
   flex-direction: column;
-  width: 32%;
   background: cWhite;
-  padding: 2em 1em 1.5em;
   border-radius: 0.2em;
+  outline: 1px solid cBlack;
+  box-shadow: rgba(149, 157, 165, 0.4) 0px 5px 15px;
+  transition: all 0.15s ease-in;
 }
 
-.list h2 {
-  color: cTitle;
-  font-size: 1.8em;
-}
-
-.date {
-  font-size: 0.9em;
-  margin: 0.5em 0;
+.list:hover {
+  outline: 4px solid cGreen;
+  border-radius: 0;
 }
 
 .list img {
-  border-radius: 0.3em;
+  width: 100%;
 }
 
-.button {
-  display: flex;
-  justify-content: space-evenly;
-  padding-top: 1em;
+.content {
+text-align: center;
+padding: 0.8em 0;
 }
-
-.button button {
-  all: unset;
-  color: cButton;
-  opacity: 0.5;
+.content h2 {
+  color: cBlack;
+  font-size: 1.8em;
 }
-
-.button button:hover {
-  opacity: 1;
+.date {
+  color: cPurple;
+  font-size: 0.7em;
+  margin: 0.5em 0;
 }

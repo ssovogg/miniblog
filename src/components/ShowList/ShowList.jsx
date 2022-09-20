@@ -18,7 +18,7 @@ const ShowList = ({ onCancle, item, user }) => {
   return (
     <>
       {editMode ? (
-        <EditForm item={contents} />
+        <EditForm item={contents} user={user} onCancle={toggleEditMode} />
       ) : (
         <form className={classes.edit_form}>
           <input type="date" value={item.date} readOnly />
@@ -35,9 +35,13 @@ const ShowList = ({ onCancle, item, user }) => {
                   className={classes.submitBtn}
                   onClick={toggleEditMode}
                 >
-                  수정
+                  <i className="fa-solid fa-pen"></i>
+                  <span>edit</span>
                 </button>
-                <button className={classes.deleteBtn}>삭제</button>
+                <button className={classes.deleteBtn}>
+                  <i className="fa-solid fa-eraser"></i>
+                  <span>delete</span>
+                </button>
               </>
             )}
             <button onClick={onCancle} className={classes.cancleBtn}>

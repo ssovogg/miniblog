@@ -1,34 +1,44 @@
-@value cWhite, cBody, cButton from '../../common/color.css';
+@value cWhite, cBody, cButton, cGreen, cSkyblue, cBlack, cPurple from '../../common/color.css';
+@value fTitle, fBody from '../../common/font.css';
 
 .blog {
   flex: 1;
   position: relative;
   width: 100%;
   margin: 0 auto;
-  background: cBody;
+  padding-top: 3.5em;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: fTitle;
 }
 
 .header {
-  width: 100%;
+  position: fixed;
+  top: 0.5em;
+  width: 98%;
   display: flex;
   justify-content: space-between;
-  padding: 1em;
-  background: cWhite;
+  padding: 0.5em 1.5em;
+  background: rgba(255,255,255,.5);
+  backdrop-filter: blur(10px);
+  box-shadow: rgba(50, 50, 93, 0.05) 0px 13px 27px -5px, rgba(0, 0, 0, 0.05) 0px 8px 16px -8px;
+  z-index: 999;
+  border: 1.5px solid cBlack;
 }
 .header div {
   display: flex;
-} 
+}
 .header button {
-  padding: 0 1em;
-  margin-left: 1em;
+  all: unset;
+  color: cBlack;
+  margin-left: 1.5em;
 }
 
 .header button:hover {
   transform: scale(1.1);
+  color: cGreen;
 }
 .wrap {
   position: relative;
