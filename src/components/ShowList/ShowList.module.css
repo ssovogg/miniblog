@@ -1,4 +1,4 @@
-@value cWhite, cBody, cTitle, cButton from '../../common/color.css';
+@value cWhite, cBody, cTitle, cButton, cPurple, cSkyBlue from '../../common/color.css';
 @value fTitle, fBody from '../../common/font.css';
 
 .edit_form {
@@ -7,7 +7,7 @@
   left: 25%;
   transform: translateY(-50%, -50%);
   font-family: fBody;
-  width: 50%;
+  width: 25em;
   display: flex;
   flex-direction: column;
   background: cWhite;
@@ -17,8 +17,12 @@
   z-index: 999;
 }
 .edit_form input[type="date"] {
+  position: absolute;
+  top: 0.5em;
   border: none;
-  font-size: 1.5em;
+  font-size: 1.1em;
+  font-family: fTitle;
+  text-align: end;
 }
 .edit_form input[type="date"]:focus {
   outline: none;
@@ -31,10 +35,18 @@
 }
 
 .edit_form button {
+  font-family: fTitle;
   position: absolute;
-  top: 0;
-  font-size: 0.9em;
-  padding: 0.5em 1.5em;
+  top: 0.2em;
+  font-size: 1em;
+  padding: 0.5em 1.2em;
+  color: cSkyBlue;
+}
+.edit_form button:hover {
+  color: cPurple;
+}
+.edit_form button span {
+  margin-left: 0.3em;
 }
 .deleteBtn {
   all: unset;
@@ -43,7 +55,6 @@
 .submitBtn {
   all: unset;
   right: 0;
-  background: cButton;
 }
 .cancleBtn {
   all: unset;

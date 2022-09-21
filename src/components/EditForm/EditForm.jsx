@@ -25,10 +25,11 @@ const EditForm = ({ onCancle, item, user }) => {
           <input type="text" id="title" placeholder="제목" value={item.title} />
           <textarea id="content" placeholder="본문" value={item.text} />
           <button type="submit" className={classes.submitBtn}>
-            게시
+            <i className="fa-solid fa-pen"></i>
+            <span>Save</span>
           </button>
           <button onClick={onCancle} className={classes.cancleBtn}>
-            취소
+            <span>cancle</span>
           </button>
         </div>
       </form>

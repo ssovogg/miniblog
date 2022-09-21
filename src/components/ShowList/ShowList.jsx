@@ -44,9 +44,6 @@ const ShowList = ({ onCancle, item, user }) => {
                 </button>
               </>
             )}
-            <button onClick={onCancle} className={classes.cancleBtn}>
-              X
-            </button>
           </div>
         </form>
       )}

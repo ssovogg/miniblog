@@ -1,4 +1,4 @@
-@value cWhite, cBody, cTitle, cButton from '../../common/color.css';
+@value cWhite, cBody, cTitle, cButton, cPurple, cSkyBlue from '../../common/color.css';
 @value fTitle, fBody from '../../common/font.css';
 
 .edit_form {
@@ -7,7 +7,7 @@
   left: 25%;
   transform: translateY(-50%, -50%);
   font-family: fBody;
-  width: 50%;
+  width: 25em;
   display: flex;
   flex-direction: column;
   background: cWhite;
@@ -40,13 +40,14 @@
   bottom: 1em;
   z-index: 99;
   background: cWhite;
-  padding: 0.3em;
+  padding: 0.3em 0.5em;
+  border-radius: 0.3em;
 }
 .img img {
   position: relative;
   width: 100%;
 }
-.edit_form input[type="file"] {
+.edit_form input[type=file] {
   display: none;
 }
 
@@ -54,18 +55,28 @@
   display: flex;
   flex-direction: column;
 }
-.edit_form input {
+.edit_form input[type=date] {
+  position: absolute;
+  top: 0;
+  padding: 0.5em 0.7em;
+  font-size: 1.1em;
+  font-family: fTitle;
+}
+.edit_form input[type=text] {
   flex: 1;
-  font-size: 1rem;
+  font-size: 1.6rem;
   border: none;
   border-bottom: 1px solid grey;
-  padding: 0.5em 0.7em;
+  padding-top: 0.8em;
+  text-align: center;
 }
 .edit_form textarea {
   flex: 1;
   font-size: 1rem;
   border: none;
   padding: 0.5em 0.7em;
+  text-align: center;
+  font-family: inherit;
 }
 .edit_form input:focus,
 .edit_form textarea:focus {
@@ -74,19 +85,27 @@
 }
 
 .edit_form button {
+  font-family: fTitle;
   position: absolute;
-  top: 0;
-  font-size: 0.9em;
-  padding: 0.5em 1.5em;
+  top: 0.2em;
+  font-size: 1em;
+  padding: 0.5em 1.2em;
+  color: cSkyBlue;
 }
+.edit_form button:hover {
+  color: cPurple;
+}
+.edit_form button span {
+  margin-left: 0.3em;
+}
+
 .submitBtn {
   all: unset;
   right: 0;
-  background: cButton;
 }
 .cancleBtn {
   all: unset;
-  left: 0;
+  right: 5em;
 }
 
 .back {
