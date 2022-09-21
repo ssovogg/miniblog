@@ -13,31 +13,31 @@ const Emotion = ({name, onClick}) => {
     <li>
       <input type="radio" name={name} id="fa-face-laugh-beam" />
       <label htmlFor="fa-face-laugh-beam">
-        <i class="fa-solid fa-face-laugh-beam"></i>
+        <i className="fa-solid fa-face-laugh-beam"></i>
       </label>
     </li>
     <li>
       <input type="radio" name={name} id="fa-face-smile" />
       <label htmlFor="fa-face-smile">
-        <i class="fa-solid fa-face-smile"></i>
+        <i className="fa-solid fa-face-smile"></i>
       </label>
     </li>
     <li>
       <input type="radio" name={name} id="fa-face-meh" />
       <label htmlFor="fa-face-meh">
-        <i class="fa-solid fa-face-meh"></i>
+        <i className="fa-solid fa-face-meh"></i>
       </label>
     </li>
     <li>
       <input type="radio" name={name} id="fa-face-frown" />
       <label htmlFor="fa-face-frown">
-        <i class="fa-solid fa-face-frown"></i>
+        <i className="fa-solid fa-face-frown"></i>
       </label>
     </li>
     <li>
       <input type="radio" name={name} id="fa-face-sad-tear" />
       <label htmlFor="fa-face-sad-tear">
-        <i class="fa-solid fa-face-sad-tear"></i>
+        <i className="fa-solid fa-face-sad-tear"></i>
       </label>
     </li>
   </ul>

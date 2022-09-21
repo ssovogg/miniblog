@@ -52,8 +52,28 @@ margin: 0 auto;
 }
 
 .blog_list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 0.4fr;
+  gap: 1em;
   justify-content: space-between;
+  align-content: flex-start;
   width: 100vw;
   padding: 0 1.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .blog_list {
+  grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 800px) {
+  .blog_list {
+  grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 500px) {
+  .blog_list {
+  grid-template-columns: repeat(2, 1fr);
+  }
 }

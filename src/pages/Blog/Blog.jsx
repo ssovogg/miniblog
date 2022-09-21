@@ -8,6 +8,13 @@ import Emotion from "../../components/Emotion/Emotion";
 import { addDoc, collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { useEffect } from "react";
 
+// updateDoc(doc(db, "diary", diary.did), {
+//   date: date,
+//   title: title,
+//   content: content,
+//   img: img
+// });
+
 const Blog = ({ db }) => {
   const user = true;
   const [contentList, setContentList] = useState([]);
@@ -19,6 +26,8 @@ const Blog = ({ db }) => {
     setShowMode((prev) => !prev);
     setBlogObj(item);
   };
+
+  // CREATE
   const addContent = async (content) => {
     const ok = window.confirm("게시하겠습니까?");
     if (ok) {
@@ -31,8 +40,11 @@ const Blog = ({ db }) => {
         emotion: content.emotion,
       });
       toggleEditMode();
+      toggleShowMode();
     }
   };
+
+  // DELETE
   const deleteContent = async (did) => {
     const ok = window.confirm("삭제하시겠습니까?");
     if(ok){
@@ -40,6 +52,8 @@ const Blog = ({ db }) => {
       toggleShowMode();
     }
   }
+
+  // READ
   useEffect(() => {
     onSnapshot(collection(db, "blog"), (snapshot) => {
       const contents = snapshot.docs.map((doc) => ({
@@ -49,8 +63,10 @@ const Blog = ({ db }) => {
       setContentList(contents);
     });
   });
+
   return (
     <div className={classes.blog}>
+      {/* HEADER */}
       <header className={classes.header}>
         <h1>Blog</h1>
         <div>
@@ -60,12 +76,16 @@ const Blog = ({ db }) => {
           <button>logout</button>
         </div>
       </header>
+      {/* MAIN */}
       <div className={classes.wrap}>
         <div className={classes.emotion_wrap}>
           {/* <Emotion name="main"/> */}
         </div>
         {editMode && (
-          <AddForm onCancle={toggleEditMode} addContent={addContent} />
+          <AddForm 
+            onCancle={toggleEditMode} 
+            addContent={addContent} 
+          />
         )}
         {showMode && (
           <ShowList

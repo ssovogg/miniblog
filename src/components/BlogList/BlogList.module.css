@@ -4,7 +4,7 @@
 .list {
   font-family: fBody;
   display: flex;
-  width: 31.5%;
+  width: 100%;
   text-align: start;
   flex-direction: column;
   background: cWhite;

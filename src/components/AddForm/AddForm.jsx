@@ -29,30 +29,33 @@ const AddForm = ({ onCancle, addContent }) => {
     } 
     addContent(contents);
     formRef.current.reset();
-    console.log(img);
+    setImg(null);
   };
   const fileChangeClick = (e) => {
+    e.preventDefault();
     fileRef.current.click();
+  };
+  const onChangeFileInput = (e) => {
     const imgFile = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(imgFile);
     reader.onload = (event) => {
       setImg(event.target.result);
     };
-  };
-  // const onChangeFileInput = (e) => {
-  // }
+    console.log(reader);
+  }
+  
   return (
     <>
       <form className={classes.edit_form} onSubmit={onSubmit} ref={formRef}>
         <input type="date" ref={dateRef} />
         <div className={classes.img}>
           <button className={classes.fileBtn} onClick={fileChangeClick}>
-            {img ? "사진 추가" : "사진 변경" }
+            사진 추가
           </button>
-          {img && <img src={img} alt={titleRef} />}
+          <img src={img} alt={img} />
         </div>
-        <input type="file" id="pic" ref={fileRef}/>
+        <input type="file" id="pic" ref={fileRef} onChange={onChangeFileInput}/>
         <Emotion name="add" onClick={selectEmotion}/>
         <div>
           <input type="text" id="title" placeholder="제목" ref={titleRef}/>

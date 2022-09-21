@@ -51,23 +51,6 @@
   display: none;
 }
 
-.emotion {
-  display: flex;
-  justify-content: space-evenly;
-  padding-top: 0.5em;
-}
-.emotion input[type=radio] {
-  display: none;
-}
-.emotion input[type=radio]+label {
-  color: #ccc;
-  font-size: 2em;
-}
-.emotion input[type=radio]:checked+label {
-  color: cGreen;
-}
-
-
 .edit_form div {
   display: flex;
   flex-direction: column;
