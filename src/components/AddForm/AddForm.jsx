@@ -11,6 +11,7 @@ const Back = (props) => (
 const AddForm = ({ onCancle, addContent }) => {
   const [img, setImg] = useState(null);
   const [emotion, setEmotion] = useState('');
+  const formRef = useRef();
   const dateRef = useRef();
   const fileRef = useRef();
   const titleRef = useRef();
@@ -27,29 +28,31 @@ const AddForm = ({ onCancle, addContent }) => {
       image: img,
     } 
     addContent(contents);
+    formRef.current.reset();
+    console.log(img);
   };
-  const fileChangeClick = () => {
+  const fileChangeClick = (e) => {
     fileRef.current.click();
-  };
-  const onChangeFileInput = (e) => {
     const imgFile = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(imgFile);
     reader.onload = (event) => {
       setImg(event.target.result);
     };
-  }
+  };
+  // const onChangeFileInput = (e) => {
+  // }
   return (
     <>
-      <form className={classes.edit_form} onSubmit={onSubmit}>
+      <form className={classes.edit_form} onSubmit={onSubmit} ref={formRef}>
         <input type="date" ref={dateRef} />
         <div className={classes.img}>
           <button className={classes.fileBtn} onClick={fileChangeClick}>
-            사진 추가
+            {img ? "사진 추가" : "사진 변경" }
           </button>
           {img && <img src={img} alt={titleRef} />}
         </div>
-        <input type="file" id="pic" ref={fileRef} onChange={onChangeFileInput}/>
+        <input type="file" id="pic" ref={fileRef}/>
         <Emotion name="add" onClick={selectEmotion}/>
         <div>
           <input type="text" id="title" placeholder="제목" ref={titleRef}/>

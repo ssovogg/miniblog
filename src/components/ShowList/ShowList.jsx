@@ -7,20 +7,22 @@ const Back = (props) => (
   <div className={classes.back} onClick={props.onClick}></div>
 );
 
-const ShowList = ({ onCancle, item, user }) => {
+const ShowList = ({ onCancle, item, user, onDelete }) => {
   const [contents, setContents] = useState(item);
   const [editMode, setEditMode] = useState(false);
+  const onDeleteHandler = () => {
+    onDelete(item.did);
+  }
   const toggleEditMode = () => {
     setEditMode((prev) => !prev);
     console.log(contents);
   };
-
   return (
     <>
       {editMode ? (
         <EditForm item={contents} user={user} onCancle={toggleEditMode} />
       ) : (
-        <form className={classes.edit_form}>
+        <div className={classes.edit_form}>
           <input type="date" value={item.date} readOnly />
           <div className={classes.img}>
             <img src={item.image} alt="" />
@@ -38,14 +40,14 @@ const ShowList = ({ onCancle, item, user }) => {
                   <i className="fa-solid fa-pen"></i>
                   <span>edit</span>
                 </button>
-                <button className={classes.deleteBtn}>
+                <button className={classes.deleteBtn} onClick={onDeleteHandler}>
                   <i className="fa-solid fa-eraser"></i>
                   <span>delete</span>
                 </button>
               </>
             )}
           </div>
-        </form>
+        </div>
       )}
       <Back onClick={onCancle} />
     </>
