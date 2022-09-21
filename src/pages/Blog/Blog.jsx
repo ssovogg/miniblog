@@ -5,7 +5,8 @@ import ShowList from "../../components/ShowList/ShowList";
 import BlogList from "../../components/BlogList/BlogList";
 import classes from "./Blog.module.css";
 import Emotion from "../../components/Emotion/Emotion";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, onSnapshot } from "firebase/firestore";
+import { useEffect } from "react";
 
 const DUMMY = [
   {
@@ -39,6 +40,7 @@ const DUMMY = [
 
 const Blog = ({ db }) => {
   const user = true;
+  const [contentList, setContentList] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [showMode, setShowMode] = useState(false);
   const [blogObj, setBlogObj] = useState({});
@@ -61,6 +63,15 @@ const Blog = ({ db }) => {
       toggleEditMode();
     }
   }
+  useEffect(() => {
+    onSnapshot(collection(db, "blog"), snapshot => {
+      const contents = snapshot.docs.map((doc) => ({
+        did: doc.id,
+        ...doc.data(),
+      }));
+      setContentList(contents);
+    })
+  })
   return (
     <div className={classes.blog}>
       <header className={classes.header}>
@@ -81,7 +92,7 @@ const Blog = ({ db }) => {
           <ShowList onCancle={toggleShowMode} item={blogObj} user={user} />
         )}
         <ul className={classes.blog_list}>
-          {DUMMY.map((item) => (
+          {contentList.map((item) => (
             <BlogList
               key={item.id}
               item={item}
