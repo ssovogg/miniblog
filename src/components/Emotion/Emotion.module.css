@@ -1,0 +1,18 @@
+@value cWhite, cBody, cTitle, cButton, cPurple, cSkyBlue, cGreen from '../../common/color.css';
+@value fTitle, fBody from '../../common/font.css';
+
+.emotion {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 0.5em;
+}
+.emotion input[type=radio] {
+  display: none;
+}
+.emotion input[type=radio]+label {
+  color: #ccc;
+  font-size: 2em;
+}
+.emotion input[type=radio]:checked+label {
+  color: cGreen;
+}

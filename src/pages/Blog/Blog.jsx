@@ -4,6 +4,8 @@ import AddForm from "../../components/AddForm/AddForm";
 import ShowList from "../../components/ShowList/ShowList";
 import BlogList from "../../components/BlogList/BlogList";
 import classes from "./Blog.module.css";
+import Emotion from "../../components/Emotion/Emotion";
+import { addDoc, collection } from "firebase/firestore";
 
 const DUMMY = [
   {
@@ -11,6 +13,7 @@ const DUMMY = [
     date: "2022-09-20",
     title: "호랑이",
     text: "first text",
+    emotion: "fa-face-laugh-beam",
     image:
       "https://i.pinimg.com/564x/29/72/ae/2972ae2a99d5ed137af61ae52834b5b5.jpg",
   },
@@ -18,7 +21,8 @@ const DUMMY = [
     id: "d2",
     date: "2022-09-18",
     title: "사람",
-    text: "first text",
+    text: "fa-face-smile",
+    emotion: "fa-face-meh",
     image:
       "https://i.pinimg.com/564x/b2/db/0a/b2db0ac7ddfe97fb862f02bdad38c3ee.jpg",
   },
@@ -27,12 +31,13 @@ const DUMMY = [
     date: "2022-08-20",
     title: "고양이",
     text: "first text",
+    emotion: "fa-face-frown",
     image:
       "https://i.pinimg.com/564x/2d/ff/78/2dff7853ce5f405a87442bb8d3929369.jpg",
   },
 ];
 
-const Blog = (props) => {
+const Blog = ({ db }) => {
   const user = true;
   const [editMode, setEditMode] = useState(false);
   const [showMode, setShowMode] = useState(false);
@@ -42,6 +47,20 @@ const Blog = (props) => {
     setShowMode((prev) => !prev);
     setBlogObj(item);
   };
+  const addContent = async (content) => {
+    await addDoc(collection(db, "blog"), {
+      id: content.id,
+      title: content.title,
+      text: content.text,
+      date: content.date,
+      image: content.image,
+      emotion: content.emotion
+    });
+    const ok = window.confirm("게시하겠습니까?");
+    if(ok){
+      toggleEditMode();
+    }
+  }
   return (
     <div className={classes.blog}>
       <header className={classes.header}>
@@ -54,7 +73,10 @@ const Blog = (props) => {
         </div>
       </header>
       <div className={classes.wrap}>
-        {editMode && <AddForm onCancle={toggleEditMode} />}
+        <div className={classes.emotion_wrap}>
+          {/* <Emotion name="main"/> */}
+        </div>
+        {editMode && <AddForm onCancle={toggleEditMode} addContent={addContent} />}
         {showMode && (
           <ShowList onCancle={toggleShowMode} item={blogObj} user={user} />
         )}

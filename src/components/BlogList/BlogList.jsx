@@ -6,6 +6,9 @@ const BlogList = ({ item, user, showList }) => {
   return (
     <li className={classes.list} onClick={onClick}>
       <img src={item.image} alt="item.title" />
+      <div className={classes.emotion}>
+        <i className={`fa-solid ${item.emotion}`}></i>
+      </div>
       <div className={classes.content}>
         <h2>{item.title}</h2>
         <span className={classes.date}>{item.date}</span>

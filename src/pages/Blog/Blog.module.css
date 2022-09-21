@@ -44,6 +44,13 @@
   position: relative;
   padding-top: 1.5em;
 }
+
+.emotion_wrap {
+width: 15em;
+padding-bottom: 1em;
+margin: 0 auto;
+}
+
 .blog_list {
   display: flex;
   justify-content: space-between;
